@@ -49,9 +49,9 @@
 #define SHKDoubanCallbackUrl            @""	// The user defined callback url
 
 // Tencent Weibo 
-#define SHKTencentWeiboConsumerKey      @""	// The consumer key
-#define SHKTencentWeiboConsumerSecret   @""	// The secret key
-#define SHKTencentWeiboCallbackUrl      @""	// The user defined callback url
+#define SHKTencentWeiboConsumerKey      @"801065801"	// The consumer key
+#define SHKTencentWeiboConsumerSecret   @"f33650danul32c7b1f335311d0c1bd9a6f2"	// The secret key
+#define SHKTencentWeiboCallbackUrl      @"null"	// The callback url MUST BE "null" for client app
 
 // RenRen 
 #define SHKRenRenAppId                  @""	// The App Id
@@ -158,7 +158,7 @@
  ------
  To show debug output in the console, define _SHKDebugShowLogs somewhere.
  */
-
+#define _SHKDebugShowLogs               1
 #ifdef _SHKDebugShowLogs
 	#define SHKDebugShowLogs			1
 	#define SHKLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )

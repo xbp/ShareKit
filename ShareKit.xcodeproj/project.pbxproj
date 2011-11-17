@@ -90,7 +90,6 @@
 		8563E284125C8512002D729F /* SHKEvernote.m in Sources */ = {isa = PBXBuildFile; fileRef = 8563E283125C8512002D729F /* SHKEvernote.m */; };
 		8563E342125C884A002D729F /* NSData+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = 8563E341125C884A002D729F /* NSData+md5.m */; };
 		8563E43A125C8D1E002D729F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8563E436125C8D1E002D729F /* Localizable.strings */; };
-		AC8D84A21472B55B00699D99 /* iOS SDK使用说明.pdf in Resources */ = {isa = PBXBuildFile; fileRef = AC8D840C1472B55A00699D99 /* iOS SDK使用说明.pdf */; };
 		AC8D84A31472B55B00699D99 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8D84101472B55A00699D99 /* NSObject+SBJSON.m */; };
 		AC8D84A41472B55B00699D99 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8D84121472B55A00699D99 /* NSString+SBJSON.m */; };
 		AC8D84A51472B55B00699D99 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8D84141472B55A00699D99 /* SBJSON.m */; };
@@ -156,6 +155,9 @@
 		ACA483431343679900A03B1F /* SHKSinaWeiboForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA483411343679900A03B1F /* SHKSinaWeiboForm.m */; };
 		ACA8F4781345E3E80058C93D /* SHKDouban.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA8F4751345E3E80058C93D /* SHKDouban.m */; };
 		ACA8F4791345E3E80058C93D /* SHKDoubanForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA8F4771345E3E80058C93D /* SHKDoubanForm.m */; };
+		ACBED6FB1474F1A1002389EA /* SHKTencentWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBED6F61474F1A1002389EA /* SHKTencentWeibo.m */; };
+		ACBED6FC1474F1A1002389EA /* SHKTencentWeiboForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBED6F81474F1A1002389EA /* SHKTencentWeiboForm.m */; };
+		ACBED6FD1474F1A1002389EA /* SHKTencentWeiboOAuthRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ACBED6FA1474F1A1002389EA /* SHKTencentWeiboOAuthRequest.m */; };
 		ACDE01EE1474AAF700FF360C /* SHKRenRenForm.m in Sources */ = {isa = PBXBuildFile; fileRef = ACDE01ED1474AAF700FF360C /* SHKRenRenForm.m */; };
 /* End PBXBuildFile section */
 
@@ -320,7 +322,6 @@
 		8563E438125C8D1E002D729F /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = Classes/ShareKit/Localization/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		8563E439125C8D1E002D729F /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = Classes/ShareKit/Localization/ja.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* ShareKit-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareKit-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		AC8D840C1472B55A00699D99 /* iOS SDK使用说明.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "iOS SDK使用说明.pdf"; sourceTree = "<group>"; };
 		AC8D840E1472B55A00699D99 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		AC8D840F1472B55A00699D99 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		AC8D84101472B55A00699D99 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -445,6 +446,12 @@
 		ACA8F4751345E3E80058C93D /* SHKDouban.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKDouban.m; sourceTree = "<group>"; };
 		ACA8F4761345E3E80058C93D /* SHKDoubanForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKDoubanForm.h; sourceTree = "<group>"; };
 		ACA8F4771345E3E80058C93D /* SHKDoubanForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKDoubanForm.m; sourceTree = "<group>"; };
+		ACBED6F51474F1A1002389EA /* SHKTencentWeibo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKTencentWeibo.h; sourceTree = "<group>"; };
+		ACBED6F61474F1A1002389EA /* SHKTencentWeibo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKTencentWeibo.m; sourceTree = "<group>"; };
+		ACBED6F71474F1A1002389EA /* SHKTencentWeiboForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKTencentWeiboForm.h; sourceTree = "<group>"; };
+		ACBED6F81474F1A1002389EA /* SHKTencentWeiboForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKTencentWeiboForm.m; sourceTree = "<group>"; };
+		ACBED6F91474F1A1002389EA /* SHKTencentWeiboOAuthRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKTencentWeiboOAuthRequest.h; sourceTree = "<group>"; };
+		ACBED6FA1474F1A1002389EA /* SHKTencentWeiboOAuthRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKTencentWeiboOAuthRequest.m; sourceTree = "<group>"; };
 		ACDE01EC1474AAF700FF360C /* SHKRenRenForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHKRenRenForm.h; sourceTree = "<group>"; };
 		ACDE01ED1474AAF700FF360C /* SHKRenRenForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHKRenRenForm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -766,6 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				ACA4833D1343679900A03B1F /* Sina Weibo */,
+				ACBED6F41474F1A1002389EA /* Tencent Weibo */,
 				ACA8F4731345E3E80058C93D /* Douban */,
 				AC8D84091472B55A00699D99 /* Renren */,
 				43A536C111DBE3B9004A1712 /* Delicious */,
@@ -964,19 +972,10 @@
 		AC8D840A1472B55A00699D99 /* RRConnect */ = {
 			isa = PBXGroup;
 			children = (
-				AC8D840B1472B55A00699D99 /* Doc */,
 				AC8D840D1472B55A00699D99 /* JSON */,
 				AC8D841B1472B55A00699D99 /* Renren */,
 			);
 			path = RRConnect;
-			sourceTree = "<group>";
-		};
-		AC8D840B1472B55A00699D99 /* Doc */ = {
-			isa = PBXGroup;
-			children = (
-				AC8D840C1472B55A00699D99 /* iOS SDK使用说明.pdf */,
-			);
-			path = Doc;
 			sourceTree = "<group>";
 		};
 		AC8D840D1472B55A00699D99 /* JSON */ = {
@@ -1231,6 +1230,19 @@
 			path = Douban;
 			sourceTree = "<group>";
 		};
+		ACBED6F41474F1A1002389EA /* Tencent Weibo */ = {
+			isa = PBXGroup;
+			children = (
+				ACBED6F51474F1A1002389EA /* SHKTencentWeibo.h */,
+				ACBED6F61474F1A1002389EA /* SHKTencentWeibo.m */,
+				ACBED6F71474F1A1002389EA /* SHKTencentWeiboForm.h */,
+				ACBED6F81474F1A1002389EA /* SHKTencentWeiboForm.m */,
+				ACBED6F91474F1A1002389EA /* SHKTencentWeiboOAuthRequest.h */,
+				ACBED6FA1474F1A1002389EA /* SHKTencentWeiboOAuthRequest.m */,
+			);
+			path = "Tencent Weibo";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1295,7 +1307,6 @@
 				43A5382911DBE480004A1712 /* sanFran.jpg in Resources */,
 				43C91D1D11EB963600F31FAE /* MainWindow-iPad.xib in Resources */,
 				8563E43A125C8D1E002D729F /* Localizable.strings in Resources */,
-				AC8D84A21472B55B00699D99 /* iOS SDK使用说明.pdf in Resources */,
 				AC8D84AA1472B55B00699D99 /* bottom-bar.png in Resources */,
 				AC8D84AB1472B55B00699D99 /* bottom-bar@2x.png in Resources */,
 				AC8D84AC1472B55B00699D99 /* head-frame.png in Resources */,
@@ -1440,6 +1451,9 @@
 				AC8D84CF1472B55B00699D99 /* ROImageView.m in Sources */,
 				AC8D84F61472B59800699D99 /* SHKRenRen.m in Sources */,
 				ACDE01EE1474AAF700FF360C /* SHKRenRenForm.m in Sources */,
+				ACBED6FB1474F1A1002389EA /* SHKTencentWeibo.m in Sources */,
+				ACBED6FC1474F1A1002389EA /* SHKTencentWeiboForm.m in Sources */,
+				ACBED6FD1474F1A1002389EA /* SHKTencentWeiboOAuthRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
