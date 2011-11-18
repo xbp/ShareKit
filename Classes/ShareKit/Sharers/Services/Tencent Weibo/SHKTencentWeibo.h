@@ -32,9 +32,6 @@
 
 
 @interface SHKTencentWeibo : SHKOAuthSharer 
-{	
-}
-    
     
 #pragma mark -
 #pragma mark UI Implementation

@@ -358,7 +358,7 @@
                                                                            signatureProvider:signatureProvider];
     
 	
-	[oRequest setHTTPMethod:@"POST"];
+	[oRequest setHTTPMethod:@"GET"];
 	
     OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
                                                                                           delegate:self

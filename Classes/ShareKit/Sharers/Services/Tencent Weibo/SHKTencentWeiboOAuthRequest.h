@@ -12,9 +12,11 @@
 @interface SHKTencentWeiboOAuthRequest : OAMutableURLRequest
 
 - (NSString *)_generateQueryString;
+- (NSString *)_signatureBaseString:(NSMutableDictionary *)params;
 
 - (void)_generateTimestamp;
 - (void)_generateNonce;
-- (NSString *)_signatureBaseString;
-- (NSString *)_signatureBaseString:(NSMutableDictionary *)params;
+
+-(NSString *)Base64Encode:(NSData *)data;
+
 @end
