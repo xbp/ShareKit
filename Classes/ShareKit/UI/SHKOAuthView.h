@@ -55,4 +55,6 @@
 - (void)startSpinner;
 - (void)stopSpinner;
 
+- (NSMutableDictionary *)queryParamsFromString:(NSString *)paramString;
+
 @end

@@ -41,7 +41,8 @@
         // OAuth
 		self.consumerKey = SHKTencentWeiboConsumerKey;		
 		self.secretKey = SHKTencentWeiboConsumerSecret;
-		
+		self.authorizeCallbackURL = [NSURL URLWithString:SHKTencentWeiboCallbackUrl];
+        
 		// You do not need to edit these, they are the same for everyone
         self.authorizeURL = [NSURL URLWithString:@"https://open.t.qq.com/cgi-bin/authorize"];
 	    self.requestURL = [NSURL URLWithString:@"https://open.t.qq.com/cgi-bin/request_token"];
@@ -396,12 +397,14 @@
 - (void)tokenRequestTicket:(OAServiceTicket *)ticket didFailWithError:(NSError*)error
 {
 	[[SHKActivityIndicator currentIndicator] hide];
+    
+    [self tokenRequest];
 	
-	[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Request Error")
-								 message:error!=nil?[error localizedDescription]:SHKLocalizedString(@"There was an error while sharing")
-								delegate:nil
-					   cancelButtonTitle:SHKLocalizedString(@"Close")
-					   otherButtonTitles:nil] autorelease] show];
+//	[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Request Error")
+//								 message:error!=nil?[error localizedDescription]:SHKLocalizedString(@"There was an error while sharing")
+//								delegate:nil
+//					   cancelButtonTitle:SHKLocalizedString(@"Close")
+//					   otherButtonTitles:nil] autorelease] show];
 }
 
 
@@ -410,7 +413,7 @@
 - (void)tokenAuthorize
 {	
 	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@", authorizeURL.absoluteString, requestToken.key]];
-    if ( ! [[authorizeCallbackURL absoluteString] isEqualToString:@""]) {
+    if (authorizeCallbackURL != nil && ! [[authorizeCallbackURL absoluteString] isEqualToString:@""]) {
         url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@&oauth_callback=%@", 
                                     authorizeURL.absoluteString, 
                                     requestToken.key, 
@@ -462,11 +465,11 @@
 	if (!refresh)
 		[[SHKActivityIndicator currentIndicator] displayActivity:SHKLocalizedString(@"Authenticating...")];
 	
-    OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:accessURL
-                                                                    consumer:consumer
-																	   token:(refresh ? accessToken : requestToken)
-                                                                       realm:nil   // our service provider doesn't specify a realm
-                                                           signatureProvider:signatureProvider]; // use the default method, HMAC-SHA1
+    SHKTencentWeiboOAuthRequest *oRequest = [[SHKTencentWeiboOAuthRequest alloc] initWithURL:accessURL
+                                                                                    consumer:consumer
+                                                                                       token:(refresh ? accessToken : requestToken)
+                                                                                       realm:nil   // our service provider doesn't specify a realm
+                                                                           signatureProvider:signatureProvider]; // use the default method, HMAC-SHA1
 	
     [oRequest setHTTPMethod:@"POST"];
 	
@@ -482,7 +485,14 @@
 
 - (void)tokenAccessModifyRequest:(OAMutableURLRequest *)oRequest
 {
-	// Subclass to add custom paramaters or headers	
+	if (pendingAction == SHKPendingRefreshToken)
+	{
+		if (accessToken.sessionHandle != nil)
+			[oRequest setOAuthParameterName:@"oauth_session_handle" withValue:accessToken.sessionHandle];	
+	}
+    
+	else
+		[oRequest setOAuthParameterName:@"oauth_verifier" withValue:[authorizeResponseQueryVars objectForKey:@"v"]];
 }
 
 - (void)tokenAccessTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data 

@@ -80,24 +80,12 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {		
 	if ([request.URL.absoluteString rangeOfString:@"authorize"].location == NSNotFound
-        && [request.URL.absoluteString rangeOfString:[delegate authorizeCallbackURL].absoluteString].location != NSNotFound)
+        && ([request.URL.absoluteString rangeOfString:[delegate authorizeCallbackURL].absoluteString].location != NSNotFound || [delegate authorizeCallbackURL] == nil))
 	{
-		// Get query
-		NSMutableDictionary *queryParams = nil;
-		if (request.URL.query != nil)
-		{
-			queryParams = [NSMutableDictionary dictionaryWithCapacity:0];
-			NSArray *vars = [request.URL.query componentsSeparatedByString:@"&"];
-			NSArray *parts;
-			for(NSString *var in vars)
-			{
-				parts = [var componentsSeparatedByString:@"="];
-				if (parts.count == 2)
-					[queryParams setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
-			}
-		}
-		
-		[delegate tokenAuthorizeView:self didFinishWithSuccess:YES queryParams:queryParams error:nil];
+		[delegate tokenAuthorizeView:self 
+                didFinishWithSuccess:YES 
+                         queryParams:[self queryParamsFromString:request.URL.query] 
+                               error:nil];
 		self.delegate = nil;
 		
 		return NO;
@@ -114,10 +102,18 @@
 - (void)webViewDidFinishLoad:(UIWebView *)aWebView
 {	
 	[self stopSpinner];
+    
+    NSLog(@"webView URL: %@", webView.request.URL.absoluteString);
 	
 	// Extra sanity check for Twitter OAuth users to make sure they are using BROWSER with a callback instead of pin based auth
 	if ([webView.request.URL.host isEqualToString:@"twitter.com"] && [webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('oauth_pin').innerHTML"].length)
 		[delegate tokenAuthorizeView:self didFinishWithSuccess:NO queryParams:nil error:[SHK error:@"Your SHKTwitter config is incorrect.  You must set your application type to Browser and define a callback url.  See SHKConfig.h for more details"]];
+    
+    NSMutableDictionary *queryParams = [self queryParamsFromString:webView.request.URL.query];
+    if ([webView.request.URL.host isEqualToString:@"open.t.qq.com"] && [queryParams objectForKey:@"v"] != nil)
+    {
+        [delegate tokenAuthorizeView:self didFinishWithSuccess:YES queryParams:queryParams error:nil];
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -159,6 +155,28 @@
 {
 	[delegate tokenAuthorizeCancelledView:self];
 	[[SHK currentHelper] hideCurrentViewControllerAnimated:YES];
+}
+
+
+- (NSDictionary *)queryParamsFromString:(NSString *)paramString
+{
+    NSMutableDictionary *queryParams = nil;
+    if (paramString != nil)
+    {
+        queryParams = [NSMutableDictionary dictionaryWithCapacity:0];
+        NSArray *vars = [paramString componentsSeparatedByString:@"&"];
+        NSArray *parts;
+        for(NSString *var in vars)
+        {
+            parts = [var componentsSeparatedByString:@"="];
+            if (parts.count == 2)
+                [queryParams setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
+        }
+    }
+    
+    NSLog(@"queryParams: %@", queryParams);
+    
+    return queryParams;
 }
 
 @end

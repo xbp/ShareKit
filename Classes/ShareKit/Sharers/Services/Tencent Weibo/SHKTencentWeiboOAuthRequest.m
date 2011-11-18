@@ -78,6 +78,11 @@ signatureProvider:(id<OASignatureProviding, NSObject>)aProvider
         [allParameters setObject:token.key forKey:@"oauth_token"];
     }
     
+    for(NSString *parameterName in [[extraOAuthParameters allKeys] sortedArrayUsingSelector:@selector(compare:)])
+	{
+        [allParameters setObject:[extraOAuthParameters objectForKey:parameterName] forKey:parameterName];
+	}
+    
     signature = [signatureProvider signClearText:[self _signatureBaseString:allParameters]
                                       withSecret:[NSString stringWithFormat:@"%@&%@",
 												  [consumer.secret URLEncodedString],
