@@ -356,7 +356,8 @@
                                                                                     consumer:consumer
                                                                                        token:nil   // we don't have a Token yet
                                                                                        realm:nil   // our service provider doesn't specify a realm
-                                                                           signatureProvider:signatureProvider];
+                                                                           signatureProvider:signatureProvider
+                                                                             extraParameters:nil]; // we don't need any extra parameters
     
 	
 	[oRequest setHTTPMethod:@"GET"];
@@ -399,12 +400,6 @@
 	[[SHKActivityIndicator currentIndicator] hide];
     
     [self tokenRequest];
-	
-//	[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Request Error")
-//								 message:error!=nil?[error localizedDescription]:SHKLocalizedString(@"There was an error while sharing")
-//								delegate:nil
-//					   cancelButtonTitle:SHKLocalizedString(@"Close")
-//					   otherButtonTitles:nil] autorelease] show];
 }
 
 
@@ -412,14 +407,10 @@
 
 - (void)tokenAuthorize
 {	
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@", authorizeURL.absoluteString, requestToken.key]];
-    if (authorizeCallbackURL != nil && ! [[authorizeCallbackURL absoluteString] isEqualToString:@""]) {
-        url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@&oauth_callback=%@", 
-                                    authorizeURL.absoluteString, 
-                                    requestToken.key, 
-                                    [authorizeCallbackURL absoluteString]]];
-    }
-    
+	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?oauth_token=%@&oauth_callback=%@", 
+                                       authorizeURL.absoluteString, 
+                                       requestToken.key, 
+                                       [authorizeCallbackURL absoluteString]]];
 	
 	SHKOAuthView *auth = [[SHKOAuthView alloc] initWithURL:url delegate:self];
 	[[SHK currentHelper] showViewController:auth];	
@@ -469,11 +460,10 @@
                                                                                     consumer:consumer
                                                                                        token:(refresh ? accessToken : requestToken)
                                                                                        realm:nil   // our service provider doesn't specify a realm
-                                                                           signatureProvider:signatureProvider]; // use the default method, HMAC-SHA1
+                                                                           signatureProvider:signatureProvider
+                                                                             extraParameters:authorizeResponseQueryVars]; // use the default method, HMAC-SHA1
 	
-    [oRequest setHTTPMethod:@"POST"];
-	
-	[self tokenAccessModifyRequest:oRequest];
+    [oRequest setHTTPMethod:@"GET"];
 	
     OAAsynchronousDataFetcher *fetcher = [OAAsynchronousDataFetcher asynchronousFetcherWithRequest:oRequest
                                                                                           delegate:self
@@ -481,18 +471,6 @@
                                                                                    didFailSelector:@selector(tokenAccessTicket:didFailWithError:)];
 	[fetcher start];
 	[oRequest release];
-}
-
-- (void)tokenAccessModifyRequest:(OAMutableURLRequest *)oRequest
-{
-	if (pendingAction == SHKPendingRefreshToken)
-	{
-		if (accessToken.sessionHandle != nil)
-			[oRequest setOAuthParameterName:@"oauth_session_handle" withValue:accessToken.sessionHandle];	
-	}
-    
-	else
-		[oRequest setOAuthParameterName:@"oauth_verifier" withValue:[authorizeResponseQueryVars objectForKey:@"v"]];
 }
 
 - (void)tokenAccessTicket:(OAServiceTicket *)ticket didFinishWithData:(NSData *)data 

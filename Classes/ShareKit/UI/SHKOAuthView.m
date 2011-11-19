@@ -174,8 +174,6 @@
         }
     }
     
-    NSLog(@"queryParams: %@", queryParams);
-    
     return queryParams;
 }
 

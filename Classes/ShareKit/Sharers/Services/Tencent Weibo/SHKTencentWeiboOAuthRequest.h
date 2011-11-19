@@ -11,6 +11,14 @@
 
 @interface SHKTencentWeiboOAuthRequest : OAMutableURLRequest
 
+- (id)initWithURL:(NSURL *)aUrl 
+         consumer:(OAConsumer *)aConsumer 
+            token:(OAToken *)aToken 
+            realm:(NSString *)aRealm 
+signatureProvider:(id<OASignatureProviding,NSObject>)aProvider
+  extraParameters:(NSDictionary *)extraParameters;
+
+
 - (NSString *)_generateQueryString;
 - (NSString *)_signatureBaseString:(NSMutableDictionary *)params;
 
