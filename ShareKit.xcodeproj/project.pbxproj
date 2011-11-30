@@ -136,7 +136,7 @@
 		AC8D84CE1472B55B00699D99 /* ROGlobalStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8D84641472B55A00699D99 /* ROGlobalStyle.m */; };
 		AC8D84CF1472B55B00699D99 /* ROImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8D84661472B55A00699D99 /* ROImageView.m */; };
 		AC8D84F61472B59800699D99 /* SHKRenRen.m in Sources */ = {isa = PBXBuildFile; fileRef = AC8D84F51472B59800699D99 /* SHKRenRen.m */; };
-		AC9069CE146E5AD2000F8A51 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9069CD146E5AD2000F8A51 /* Twitter.framework */; };
+		AC9069CE146E5AD2000F8A51 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC9069CD146E5AD2000F8A51 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		ACA1C41514330B27005F5B21 /* EDAMLimits.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C3F214330B27005F5B21 /* EDAMLimits.m */; };
 		ACA1C41614330B27005F5B21 /* Errors.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C3F414330B27005F5B21 /* Errors.m */; };
 		ACA1C41714330B27005F5B21 /* NoteStore.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C3F614330B27005F5B21 /* NoteStore.m */; };
