@@ -80,7 +80,8 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {		
 	if ([request.URL.absoluteString rangeOfString:@"authorize"].location == NSNotFound
-        && ([request.URL.absoluteString rangeOfString:[delegate authorizeCallbackURL].absoluteString].location != NSNotFound || [delegate authorizeCallbackURL] == nil))
+        && [request.URL.absoluteString rangeOfString:@"authenticate"].location == NSNotFound
+        && [request.URL.absoluteString rangeOfString:[delegate authorizeCallbackURL].absoluteString].location != NSNotFound)
 	{
 		[delegate tokenAuthorizeView:self 
                 didFinishWithSuccess:YES 

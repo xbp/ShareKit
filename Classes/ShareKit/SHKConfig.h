@@ -2,14 +2,11 @@
 // http://getsharekit.com/install
 
 
-#define kSHKEmailShouldShortenURLs NO
-#define kSHKCopyShouldShortenURLs  NO
-
-
-
-// App Description
-// These values are used by any service that shows 'shared from XYZ'
-
+/*
+ App Description
+ ------
+ These values are used by any service that shows 'shared from XYZ'
+ */
 #define SHKMyAppName			@"My App Name"
 #define SHKMyAppURL				@"http://example.com"
 
@@ -38,7 +35,7 @@
 // Sina Weibo 
 #define SHKSinaWeiboConsumerKey         @""	// The consumer key
 #define SHKSinaWeiboConsumerSecret      @""	// The secret key
-#define SHKSinaWeiboCallbackUrl         @""	// The user defined callback url
+#define SHKSinaWeiboCallbackUrl         @""	// You need to set this if using OAuth (MUST be set, it could be any words)
 #define SHKSinaWeiboUseXAuth            0   // To use xAuth, set to 1
 #define SHKSinaWeiboScreenName          @"" // Enter your sina weibo screen name
 #define SHKSinaWeiboUserID              @"" // Enter your app's sina weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
@@ -46,18 +43,25 @@
 // Douban
 #define SHKDoubanConsumerKey            @""	// The consumer key
 #define SHKDoubanConsumerSecret         @""	// The secret key
-#define SHKDoubanCallbackUrl            @""	// The user defined callback url
+#define SHKDoubanCallbackUrl            @""	// You need to set this if using OAuth (MUST be set, it could be any words)
 
 // Tencent Weibo 
 #define SHKTencentWeiboConsumerKey      @"801065801"	// The consumer key
 #define SHKTencentWeiboConsumerSecret   @"f33650danul32c7b1f335311d0c1bd9a6f2"	// The secret key
 #define SHKTencentWeiboCallbackUrl      @"null"	// The callback url MUST BE "null" for client app
 
+// NetEase(163) Weibo 
+#define SHKNetEaseWeiboConsumerKey         @""	// The consumer key
+#define SHKNetEaseWeiboConsumerSecret      @""	// The secret key
+#define SHKNetEaseWeiboCallbackUrl         @"null"	// The user defined callback url (MUST be set "null")
+#define SHKNetEaseWeiboUseXAuth            0   // TODO: To use xAuth, set to 1(It is not work for xAuth)
+#define SHKNetEaseWeiboScreenName          @"" // Enter your NetEase weibo screen name
+#define SHKNetEaseWeiboUserID              @"" // Enter your app's NetEase weibo account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+
 // RenRen 
 #define SHKRenRenAppId                  @""	// The App Id
 #define SHKRenRenConsumerKey            @""	// The consumer key
 #define SHKRenRenConsumerSecret         @""	// The secret key
-
 
 //////////////////////////
 // External Service 
@@ -115,8 +119,7 @@
 #define SHKBitLyLogin                   @""
 #define SHKBitLyKey                     @""
 
-// TwitPic http://dev.twitpic.com/
-#define SHKTwitPicAPIKey                @""
+
 
 
 /*
@@ -153,6 +156,21 @@
 
 
 
+
+/*
+ Advanced Configuration
+ ------
+ These settings can be left as is.  This only need to be changed for uber custom installs.
+ */
+
+#define SHK_MAX_FAV_COUNT               3
+#define SHK_FAVS_PREFIX_KEY             @"SHK_FAVS_"
+#define SHK_AUTH_PREFIX                 @"SHK_AUTH_"
+
+#define kSHKEmailShouldShortenURLs      NO
+#define kSHKCopyShouldShortenURLs       NO
+
+
 /*
  Debugging
  ------
@@ -166,14 +184,3 @@
 	#define SHKDebugShowLogs			0
 	#define SHKLog( s, ... )
 #endif
-
-
-/*
- Advanced Configuration
- ------
- These settings can be left as is.  This only need to be changed for uber custom installs.
- */
-
-#define SHK_MAX_FAV_COUNT               3
-#define SHK_FAVS_PREFIX_KEY             @"SHK_FAVS_"
-#define SHK_AUTH_PREFIX                 @"SHK_AUTH_"
