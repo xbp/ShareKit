@@ -1,6 +1,8 @@
 # PeakJi 说明文档
 
 * 根据用户所在地区排序 SNS 服务
+* 修正了新浪微博的字数统计,感谢xiongbiao0228的代码(http://blog.sina.com.cn/s/blog_458f3b300100rnll.html)
+* 修正了人人网的字数统计
 * 修正Delicious服务
 
 > 报错处理

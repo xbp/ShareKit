@@ -43,6 +43,8 @@
 #pragma mark UI Implementation
     
 - (void)showSinaWeiboForm;
+
+- (int)sinaCountWord:(NSString*)s;
     
 #pragma mark -
 #pragma mark Share API Methods

@@ -137,14 +137,13 @@ static SHKRenRen *sharedRenRen = nil;
 	[self tryToSend];
 }
 
-
 #pragma mark -
 #pragma mark Share API Methods
 
 - (BOOL)validate
 {
 	NSString *status = [item customValueForKey:@"status"];
-	return status != nil && status.length > 0 && status.length <= 140;
+    return status != nil && status.length > 0 && [self sinaCountWord:status] <= 240;
 }
 
 - (BOOL)send

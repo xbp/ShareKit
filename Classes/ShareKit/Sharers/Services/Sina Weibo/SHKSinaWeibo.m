@@ -303,13 +303,49 @@
 	[self showSinaWeiboForm];
 }
 
+#pragma mark - Word Count
+
+- (int)sinaCountWord:(NSString*)s
+
+{
+    
+    int i,n=[s length],l=0,a=0,b=0;
+    
+    unichar c;
+    
+    for(i=0;i<n;i++){
+        
+        c=[s characterAtIndex:i];
+        
+        if(isblank(c)){
+            
+            b++;
+            
+        }else if(isascii(c)){
+            
+            a++;
+            
+        }else{
+            
+            l++;
+            
+        }
+        
+    }
+    
+    if(a==0 && l==0) return 0;
+    
+    return l+(int)ceilf((float)(a+b)/2.0);
+    
+}
+
 #pragma mark -
 #pragma mark Share API Methods
 
 - (BOOL)validate
 {
 	NSString *status = [item customValueForKey:@"status"];
-	return status != nil && status.length > 0 && status.length <= 140;
+    return status != nil && status.length > 0 && [self sinaCountWord:status] <= 140;
 }
 
 - (BOOL)send
