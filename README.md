@@ -3,6 +3,12 @@
 * 根据用户所在地区排序 SNS 服务
 * 修正Delicious服务
 
+> 报错处理
+> Targets - Build Phases - Compile Sources - 添加 "-fno-objc-arc" 
+
+> 警告处理
+> Project - Build Settings - Apple LLVM compiler x.x - Warnings - Missing Function Prototypes - No
+
 # icyleaf 说明文档
 
 为了补充国内 SNS 服务支持的空白以及开源精神，特再此 fork 了原始代码，由于官方基本上不在更新，因此本项目主要完成以下目的：
