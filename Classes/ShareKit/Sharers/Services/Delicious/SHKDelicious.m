@@ -145,10 +145,10 @@
 	[super shortenURLFinished:aRequest];
 	
 	OAMutableURLRequest *oRequest = [[OAMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://api.del.icio.us/v2/posts/add"]
-																																	consumer:consumer
-																																		 token:accessToken
-																																		 realm:nil
-																												 signatureProvider:nil];
+                                                                    consumer:consumer
+                                                                       token:accessToken
+                                                                       realm:@"yahooapis.com"
+                                                           signatureProvider:nil];
 	
 	[oRequest setHTTPMethod:@"GET"];
 	
@@ -203,11 +203,11 @@
 		NSString *body = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 				
 		// Expired token
-		if ([body rangeOfString:@"token_expired"].location != NSNotFound)
-		{
-			[self refreshToken];				
-			return;
-		}
+		if ([body rangeOfString:@"token_expired"].location != NSNotFound || [body rangeOfString:@"Please provide valid credentials"].location != NSNotFound)
+        {
+            [self refreshToken];                
+            return;
+        }
 		
 		else
 			error = [SHK error:SHKLocalizedString(@"There was a problem saving to Delicious.")];
