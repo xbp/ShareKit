@@ -138,9 +138,9 @@
     if (_captionTextView.text) {
        captionLen = _captionTextView.text.length;
     }
-    _captionLimitLabel.text = [NSString stringWithFormat:@"%d/140",captionLen];
+    _captionLimitLabel.text = [NSString stringWithFormat:@"%d/240",captionLen];
     _captionLimitLabel.textColor = [UIColor darkGrayColor];
-    if (captionLen > 140) {
+    if (captionLen > 240) {
         _captionLimitLabel.textColor = [UIColor redColor];
     }
 }

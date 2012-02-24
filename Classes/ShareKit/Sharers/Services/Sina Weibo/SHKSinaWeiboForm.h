@@ -43,5 +43,6 @@
 @property BOOL hasAttachment;
 
 - (void)layoutCounter;
+- (int)sinaCountWord:(NSString*)s;
 
 @end

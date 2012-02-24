@@ -96,8 +96,8 @@
 - (void)upload
 {
     self.caption = _internal.captionTextView.text;
-    if (self.caption.length > 140) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"照片描述不能超过140字符" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    if (self.caption.length > 240) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"照片描述不能超过240字符" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
         [alert release];
         return;

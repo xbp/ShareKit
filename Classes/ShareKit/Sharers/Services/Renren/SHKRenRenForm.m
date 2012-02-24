@@ -150,7 +150,7 @@
 		[counter release];
 	}
 	
-	int count = (hasAttachment?115:140) - textView.text.length;
+	int count = (hasAttachment?115:240) - textView.text.length;
 	counter.text = [NSString stringWithFormat:@"%@%i", hasAttachment ? SHKLocalizedString(@"Image + "):@"" , count];
 	counter.textColor = count >= 0 ? [UIColor blackColor] : [UIColor redColor];
 }
@@ -188,10 +188,10 @@
 
 - (void)save
 {	
-	if (textView.text.length > (hasAttachment?115:140))
+	if (textView.text.length > (hasAttachment?115:240))
 	{
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Message is too long")
-									 message:SHKLocalizedString(@"Twitter posts can only be 140 characters in length.")
+									 message:SHKLocalizedString(@"Renren posts can only be 240 characters in length.")
 									delegate:nil
 						   cancelButtonTitle:SHKLocalizedString(@"Close")
 						   otherButtonTitles:nil] autorelease] show];

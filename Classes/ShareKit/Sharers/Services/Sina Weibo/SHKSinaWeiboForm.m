@@ -150,6 +150,42 @@
 	[self layoutCounter];
 }
 
+#pragma mark - Word Count
+
+- (int)sinaCountWord:(NSString*)s
+
+{
+    
+    int i,n=[s length],l=0,a=0,b=0;
+    
+    unichar c;
+    
+    for(i=0;i<n;i++){
+        
+        c=[s characterAtIndex:i];
+        
+        if(isblank(c)){
+            
+            b++;
+            
+        }else if(isascii(c)){
+            
+            a++;
+            
+        }else{
+            
+            l++;
+            
+        }
+        
+    }
+    
+    if(a==0 && l==0) return 0;
+    
+    return l+(int)ceilf((float)(a+b)/2.0);
+    
+}
+
 #pragma mark -
 
 - (void)updateCounter
@@ -171,7 +207,7 @@
 		[counter release];
 	}
 	
-	int count = (hasAttachment?115:140) - textView.text.length;
+	int count = (hasAttachment?115:140) - [self sinaCountWord:textView.text];
 	counter.text = [NSString stringWithFormat:@"%@%i", hasAttachment ? @"Image + ":@"" , count];
 	counter.textColor = count >= 0 ? [UIColor blackColor] : [UIColor redColor];
 }
@@ -208,10 +244,10 @@
 
 - (void)save
 {	
-	if (textView.text.length > (hasAttachment?115:140))
+	if ([self sinaCountWord:textView.text] > (hasAttachment?115:140))
 	{
 		[[[[UIAlertView alloc] initWithTitle:SHKLocalizedString(@"Message is too long")
-									 message:SHKLocalizedString(@"Twitter posts can only be 140 characters in length.")
+									 message:SHKLocalizedString(@"Sina Weibo posts can only be 140 characters in length.")
 									delegate:nil
 						   cancelButtonTitle:SHKLocalizedString(@"Close")
 						   otherButtonTitles:nil] autorelease] show];
