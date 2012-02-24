@@ -12,18 +12,18 @@
 	</array>
 	<key>services</key>
 	<array>
-		<string>SHKFacebook</string>
-		<string>SHKTwitter</string>
-		<string>SHKReadItLater</string>
-		<string>SHKEvernote</string>
-		<string>SHKPinboard</string>
-		<string>SHKDelicious</string>
-		<string>SHKGoogleReader</string>
-		<string>SHKInstapaper</string>
-		<string>SHKTumblr</string>
 		<string>SHKSinaWeibo</string>
 		<string>SHKDouban</string>
 		<string>SHKRenRen</string>
+		<string>SHKEvernote</string>
+		<string>SHKTwitter</string>
+		<string>SHKPinboard</string>
+		<string>SHKDelicious</string>
+		<string>SHKGoogleReader</string>
+		<string>SHKFacebook</string>
+		<string>SHKReadItLater</string>
+		<string>SHKInstapaper</string>
+		<string>SHKTumblr</string>
 	</array>
 </dict>
 </plist>

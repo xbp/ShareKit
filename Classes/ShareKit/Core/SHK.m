@@ -442,7 +442,16 @@ static NSDictionary *sharersDictionary = nil;
 + (NSDictionary *)sharersDictionary
 {
 	if (sharersDictionary == nil)
-		sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"SHKSharers.plist"]] retain];
+    {
+        if([[[[NSLocale currentLocale] objectForKey:NSLocaleCountryCode] lowercaseString] isEqualToString:@"cn"])
+        {
+            sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"SHKSharers_CN.plist"]] retain];
+        }
+        else
+        {
+            sharersDictionary = [[NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"SHKSharers.plist"]] retain];
+        }
+    }
 	
 	return sharersDictionary;
 }
